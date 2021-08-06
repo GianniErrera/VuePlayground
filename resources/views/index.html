@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/js/app.js"></script>
+    <style>
+        .redtext {
+            color: ;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
+        <task-list></task-list>
+        <br>
         <example-component></example-component>
+        <br>
             <input :class="className" type="text" id="input" v-model="message"></input>
 
             <p :class="className">The message is {{message}}</p>
@@ -29,8 +37,7 @@
 
             <h1>Complete tasks</h1>
             <ul>
-                <li v-for="task in completeTasks">
-                    {{task.description}}
+                <li v-for="(task, index) in completeTasks" :key="task.id">
                     <button @click="taskIsNotComplete">Task not completed</button>
                     <input  type="checkbox" v-model="task.completed">
                 </li>
@@ -38,8 +45,8 @@
 
             <h1>Incomplete tasks</h1>
             <ul>
-                <li v-for="task in incompleteTasks">
-                    {{task.description}}
+                <li v-for="(task, index) in incompleteTasks" :key="task.id">
+                    {{task.description}} - {{index}}
                     <button @click="taskIsComplete">Task is completed</button>
                     <input type="checkbox" v-model="task.completed">
                 </li>
@@ -70,12 +77,12 @@
             className: "color-red",
             isLoading: false,
             tasks: [
-                { description: "Go to the store", completed: true },
-                { description: "Demonstrate", completed: true },
-                { description: "Jogging session", completed: true },
-                { description: "Go to the pub", completed: false },
-                { description: "Lunch break", completed: true },
-                { description: "Phone to Giovanni", completed: false },
+                { id: 1, description: "Go to the store", completed: true },
+                { id: 2, description: "Demonstrate", completed: true },
+                { id: 3, description: "Jogging session", completed: true },
+                { id: 4, description: "Go to the pub", completed: false },
+                { id: 5, description: "Lunch break", completed: true },
+                { id: 6, description: "Phone to Giovanni", completed: false },
             ]
             },
 

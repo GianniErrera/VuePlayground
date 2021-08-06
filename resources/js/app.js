@@ -20,21 +20,33 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('task-list', require('./components/TaskList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+/* Vue.component('task-list', {
+    template: <div><task v-for="task in tasks">{{task.task}}</task></div>,
+
+    data() {
+        return {
+            tasks: [
+                { description: "Go to the store", completed: true },
+                { description: "Demonstrate", completed: true },
+                { description: "Jogging session", completed: true },
+                { description: "Go to the pub", completed: false },
+                { description: "Lunch break", completed: true },
+                { description: "Phone to Giovanni", completed: false },
+            ]
+        }
+    }
+
+}); */
 
  Vue.component('task', {
     template: '<li><slot></slot></li>'
 });
 
-new Vue({
-    el: "#app"
-});
 
-const app = new Vue({
-    el: '#app',
-});
