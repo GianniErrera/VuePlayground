@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/app.js"></script>
+</head>
+<body>
+    <div id="app">
+        <example-component></example-component>
+            <input :class="className" type="text" id="input" v-model="message"></input>
+
+            <p :class="className">The message is {{message}}</p>
+
+            <ul>
+                <li v-for="name in names" v-text="name">
+                </li>
+            </ul>
+
+            <input v-model="newName" type="text">
+            <button :class="{'isLoading' : isLoading}" v-bind:title="title" v-on:click="addName" @click="toggleClass">Add name</button>
+            <h1 v-text="reversedMessage"></h1>
+            <h1>All tasks</h1>
+            <ul>
+                <li v-for="task in tasks" v-text="task.description"></li>
+            </ul>
+
+            <h1>Complete tasks</h1>
+            <ul>
+                <li v-for="task in completeTasks">
+                    {{task.description}}
+                    <button @click="taskIsNotComplete">Task not completed</button>
+                    <input  type="checkbox" v-model="task.completed">
+                </li>
+            </ul>
+
+            <h1>Incomplete tasks</h1>
+            <ul>
+                <li v-for="task in incompleteTasks">
+                    {{task.description}}
+                    <button @click="taskIsComplete">Task is completed</button>
+                    <input type="checkbox" v-model="task.completed">
+                </li>
+            </ul>
+
+
+
+            <ul>
+                <li>
+            <task>Go to the bank</task>
+            </li>
+            <li>
+            <task>Go to the store</task>
+            </li>
+            </ul>
+    </div>
+</body>
+    <script>
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+            message: "Hello world",
+            newName: "",
+            names: ["Gianni", "James", "Giovanni"],
+            title: "I am the new title",
+            className: "color-red",
+            isLoading: false,
+            tasks: [
+                { description: "Go to the store", completed: true },
+                { description: "Demonstrate", completed: true },
+                { description: "Jogging session", completed: true },
+                { description: "Go to the pub", completed: false },
+                { description: "Lunch break", completed: true },
+                { description: "Phone to Giovanni", completed: false },
+            ]
+            },
+
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = "";
+                },
+
+                toggleClass() {
+                    this.isLoading = !this.isLoading;
+                },
+
+                taskIsNotComplete() {
+                    this.name.completed = !completed;
+                },
+
+                taskIsComplete() {
+                    this.completed = true;
+                }
+
+
+            },
+            computed: {
+                reversedMessage() {
+                return this.message.split(''). reverse().join('');
+                },
+
+                incompleteTasks() {
+                return this.tasks.filter(task => ! task.completed);
+                },
+
+                completeTasks() {
+                return this.tasks.filter(task => task.completed);
+                }
+            }
+
+        })
+
+    </script>
+</html>
