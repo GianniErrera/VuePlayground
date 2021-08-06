@@ -20,3 +20,20 @@ Route::get('/', function () {
 Route::get('/vue', function () {
     return view('index');
 });
+
+Route::get('/modal', function () {
+    return view('modal');
+});
+
+Route::get('/tabs', function () {
+    return view('tabs');
+});
+
+Route::get('/coupon', function () {
+    return view('coupon');
+});
+
+
+Route::get('/events', function () {
+    return ["birthday", "Easter", "Bank holyday"];
+});

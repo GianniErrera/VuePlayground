@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/js/app.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <style>
         .redtext {
-            color: ;
+            color: red;
         }
+
     </style>
 </head>
 <body>
     <div id="app">
+        <select-order-by></select-order-by>
         <task-list></task-list>
         <br>
         <example-component></example-component>
@@ -30,26 +33,28 @@
             <input v-model="newName" type="text">
             <button :class="{'isLoading' : isLoading}" v-bind:title="title" v-on:click="addName" @click="toggleClass">Add name</button>
             <h1 v-text="reversedMessage"></h1>
-            <h1>All tasks</h1>
+            <br>
+            <h1 class="has-text-weight-bold">All tasks</h1>
             <ul>
                 <li v-for="task in tasks" v-text="task.description"></li>
             </ul>
-
-            <h1>Complete tasks</h1>
+            <br>
+            <h1 class="has-text-weight-bold">Complete tasks</h1>
             <ul>
                 <li v-for="(task, index) in completeTasks" :key="task.id">
                     {{task.description}}
                     <input  type="checkbox" v-model="task.completed">
                 </li>
             </ul>
-
-            <h1>Incomplete tasks</h1>
+            <br>
+            <h1 class="has-text-weight-bold">Incomplete tasks</h1>
             <ul>
                 <li v-for="(task, index) in incompleteTasks" :key="task.id">
                     {{task.description}}
                     <input type="checkbox" v-model="task.completed">
                 </li>
             </ul>
+            <br>
 
 
 
@@ -61,6 +66,20 @@
             <task>Go to the store</task>
             </li>
             </ul>
+
+            <message title="Some title" body="Some random content"></message>
+
+            <message title="Some other title" body="Some other random content"></message>
+
+            <modal
+            body="Let's try and see what's going on. ">
+            </modal>
+
+
+
+
+
+
     </div>
 </body>
     <script>

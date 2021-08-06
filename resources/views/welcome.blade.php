@@ -36,6 +36,10 @@
 
 
             Hello world
+
+            <ul>
+                <li v-for="event in events">@{{event}}</li>
+            </ul>
         </div>
     </body>
 
@@ -43,7 +47,13 @@
 
 
         var app = new Vue({
-            el: '#app'
+            el: '#app',
+            data: {
+                events: []
+            },
+            mounted() {
+                axios.get('/events').then(response=>this.events = response.data);
+            }
         })
 
     </script>

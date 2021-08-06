@@ -2,7 +2,7 @@
     <div>
         Hello world
          <p class="redtext">
-            <task v-for="task in tasks">
+            <task v-for="task in tasks" :key="task.id">
                 {{task.description}}
             </task>
         </p>
@@ -14,15 +14,14 @@
        data() {
             return {
                 tasks: [
-                    { description: "Go to the store", completed: true },
-                    { description: "Demonstrate", completed: true },
-                    { description: "Jogging session", completed: true },
-                    { description: "Go to the pub", completed: false },
-                    { description: "Lunch break", completed: true },
-                    { description: "Phone to Giovanni", completed: false },
+                    {  id: 1, description: "Go to the store", completed: true },
+                    {  id: 2, description: "Demonstrate", completed: true },
+                    {  id: 3, description: "Jogging session", completed: true },
+                    {  id: 4, description: "Go to the pub", completed: false },
+                    {  id: 5, description: "Lunch break", completed: true },
+                    {  id: 6, description: "Phone to Giovanni", completed: false },
                 ]
             }
         }
     }
 </script>
-
