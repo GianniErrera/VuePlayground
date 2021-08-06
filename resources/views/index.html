@@ -38,7 +38,7 @@
             <h1>Complete tasks</h1>
             <ul>
                 <li v-for="(task, index) in completeTasks" :key="task.id">
-                    <button @click="taskIsNotComplete">Task not completed</button>
+                    {{task.description}}
                     <input  type="checkbox" v-model="task.completed">
                 </li>
             </ul>
@@ -46,8 +46,7 @@
             <h1>Incomplete tasks</h1>
             <ul>
                 <li v-for="(task, index) in incompleteTasks" :key="task.id">
-                    {{task.description}} - {{index}}
-                    <button @click="taskIsComplete">Task is completed</button>
+                    {{task.description}}
                     <input type="checkbox" v-model="task.completed">
                 </li>
             </ul>
